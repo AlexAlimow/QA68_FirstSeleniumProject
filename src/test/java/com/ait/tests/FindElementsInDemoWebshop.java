@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class FindElementsInDemoWebShop {
+public class FindElementsInDemoWebshop {
     WebDriver driver;
 
     @BeforeMethod
