@@ -34,8 +34,8 @@ public class FindElementsInDemoWebShop {
         List<WebElement> links = driver.findElements(By.tagName("a"));
         System.out.println("Total links: " + links.size()); // Получаем количество ссылок
 
-        driver.findElement(By.linkText("Books")).click();
-        WebElement h1 = driver.findElement(By.tagName("h1"));
+        driver.findElement(By.linkText("Books")).click(); // переходим на страницу books
+        WebElement h1 = driver.findElement(By.tagName("h1")); // получаем h1 на странице books
         System.out.println(h1.getText());
 
     }
