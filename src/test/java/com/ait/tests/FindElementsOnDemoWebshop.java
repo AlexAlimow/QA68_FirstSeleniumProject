@@ -46,7 +46,6 @@ public class FindElementsOnDemoWebshop {
         driver.findElement(By.cssSelector(".master-wrapper-content  .header"));
         driver.findElement(By.cssSelector("div.title strong"));
         driver.findElement(By.cssSelector("div.listbox .list :nth-child(3) *"));
-
     }
 
 
