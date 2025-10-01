@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class FindElementsInDemoWebshop {
+public class FindElementsOnDemoWebshop {
     WebDriver driver;
 
     @BeforeMethod
@@ -39,6 +39,16 @@ public class FindElementsInDemoWebshop {
         System.out.println(h1.getText());
 
     }
+
+    @Test
+    public void findElementsByCssSelector(){
+        driver.findElement(By.cssSelector(".master-wrapper-page"));
+        driver.findElement(By.cssSelector(".master-wrapper-content  .header"));
+        driver.findElement(By.cssSelector("div.title strong"));
+        driver.findElement(By.cssSelector("div.listbox .list :nth-child(3) *"));
+    }
+
+
 
     @AfterMethod
     public void tearDown() {

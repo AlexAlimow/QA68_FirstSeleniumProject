@@ -49,6 +49,84 @@ public class FindElementsTests {
         System.out.println(labels.size());
     }
 
+    @Test
+    public void findElementById() {
+        WebElement city = driver.findElement(By.id("city"));
+        System.out.println(city.getDomAttribute("id"));
+        WebElement dates = driver.findElement(By.id("dates"));
+        System.out.println(dates.getDomAttribute("id"));
+    }
+
+    @Test
+    public void findElementByClassName() {
+        WebElement telephone = driver.findElement(By.className("telephone"));
+        System.out.println(telephone.getText());
+
+        WebElement navi = driver.findElement(By.className("navigation-link"));
+        System.out.println(navi.getText());
+        System.out.println(navi.getDomAttribute("class"));
+    }
+
+    @Test
+    public void findElementByLinkText() {
+        WebElement linkText = driver.findElement(By.linkText("Let the car work"));
+        System.out.println(linkText.getText());
+    }
+
+    @Test
+    public void findElementByPartialLinkText() {
+        WebElement partialLinkText = driver.findElement(By.partialLinkText("work"));
+        System.out.println(partialLinkText.getText());
+    }
+
+    @Test
+    public void findElementByCssSelector() {
+        //driver.findElement(By.tagName("h1"));
+        // tag name "h1" -> "h1"
+        driver.findElement(By.cssSelector("h1"));
+        driver.findElement(By.cssSelector("h2"));
+        //driver.findElement(By.id("city"));
+        //id="city" -> #city
+        driver.findElement(By.cssSelector("#city"));
+        driver.findElement(By.cssSelector("#dates"));
+
+        //driver.findElement(By.className("telephone"));
+        //class="telephone" -> .telephone
+        driver.findElement(By.cssSelector(".telephone"));
+        driver.findElement(By.cssSelector(".navigation-link"));
+
+        //contains -> *
+        driver.findElement(By.cssSelector("[class*='pristine']"));
+
+        //start -> ^
+        driver.findElement(By.cssSelector("[class^='ng']"));
+
+        //end to -> $
+        driver.findElement(By.cssSelector("[class$='invalid']"));
+
+        //[key='value'] // ключ значение
+        driver.findElement(By.cssSelector("[ng-reflect-name='city']"));
+        driver.findElement(By.cssSelector("[for='dates']"));
+        driver.findElement(By.cssSelector("[href='/search']"));
+
+
+        //composite cssSelector
+        driver.findElement(By.cssSelector("a.navigation-link[href='/search']")); // tag + class + pare
+        // тег потом (. -точка) Потом составная пара в квадратных скобках
+        driver.findElement(By.cssSelector(".fas.fa-bars")); // два класса через точку class + class
+
+        driver.findElement(By.cssSelector(".logo>img")); // one step below один шаг вниз
+        WebElement element = driver.findElement(By.cssSelector(".feedback-body .feedback-date"));
+        // space one more steps below, через пробел вниз вгрубь до элемента
+        System.out.println(element.getText());
+
+
+        WebElement feedbackText = driver.findElement(By.cssSelector(".feedback:nth-child(1) .feedback-text"));
+        // <tag> or <class> or <id> or <pare> :nth-child(n)
+        System.out.println(feedbackText.getText());
+
+    }
+
     @AfterMethod
     public void tearDown() {
         driver.quit();
