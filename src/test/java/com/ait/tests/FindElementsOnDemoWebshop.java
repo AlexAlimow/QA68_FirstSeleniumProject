@@ -46,6 +46,14 @@ public class FindElementsOnDemoWebshop {
         driver.findElement(By.cssSelector(".master-wrapper-content  .header"));
         driver.findElement(By.cssSelector("div.title strong"));
         driver.findElement(By.cssSelector("div.listbox .list :nth-child(3) *"));
+
+        // CW 02.10.2025
+        driver.findElement(By.cssSelector("#small-searchterms")); //search input
+        driver.findElement(By.cssSelector("[href='/register']")); // Register link
+        driver.findElement(By.cssSelector(".top-menu [href='/computers']")); // header-menu
+        driver.findElement(By.cssSelector(".top-menu [href='/books']")); //header-menu
+        driver.findElement(By.cssSelector(".listbox [href='/books']")); // side panel ('Books')
+        driver.findElement(By.cssSelector(".item-box:nth-child(2) .buttons [type='button']")); //'add to cart' button(first)
     }
 
 

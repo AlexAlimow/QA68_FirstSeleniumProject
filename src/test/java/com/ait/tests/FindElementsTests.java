@@ -124,6 +124,65 @@ public class FindElementsTests {
         WebElement feedbackText = driver.findElement(By.cssSelector(".feedback:nth-child(1) .feedback-text"));
         // <tag> or <class> or <id> or <pare> :nth-child(n)
         System.out.println(feedbackText.getText());
+    }
+
+    @Test
+
+    public void FindElementByXpath() {
+        //     //some_tag[@attribute='value']
+        //    //some_tag[1]
+        //    //some_tag[text()='Los Angeles'
+
+        // driver.findElement(By.cssSelector("h1"));
+        WebElement element = driver.findElement(By.xpath("//h1"));
+        System.out.println(element.getText());
+
+        // driver.findElement(By.cssSelector("#city"));
+        driver.findElement(By.xpath("//*[@id='city']")); // * - ищи везде
+
+        //driver.findElement(By.cssSelector(".telephone"));
+        driver.findElement(By.xpath("//*[@class='telephone']"));
+
+        //driver.findElement(By.cssSelector("[ng-reflect-name='city']"));
+        driver.findElement(By.xpath("//*[@ng-reflect-name='city']"));
+
+        //driver.findElement(By.cssSelector("[class^='ng']"));
+        driver.findElement(By.xpath("//*[starts-with(@class,'ng')]"));
+
+        // contains.text
+        //WebElement text = driver.findElement(By.xpath("//span[contains(text(),'best services')]"));
+        WebElement text = driver.findElement(By.xpath("//span[contains(.,'best services')]"));  //один из самых действенных способов найти по содержанию
+        System.out.println("*****************");
+        System.out.println(text.getText());
+
+        //equals text абсолютное соответствие по тексту
+        //WebElement textFind = driver.findElement(By.xpath("//*[text()='Find your car now!']"));
+        WebElement textFind = driver.findElement(By.xpath("//*[.='Find your car now!']"));
+        System.out.println("********************!!!");
+        System.out.println(textFind.getText());
+
+        //driver.findElement(By.cssSelector("a.navigation-link[href='/search']"));
+        driver.findElement(By.xpath("//a[@class='navigation-link'][@href='/search']"));
+
+        // driver.findElement(By.cssSelector(".fas.fa-bars"));
+        driver.findElement(By.xpath("//*[@class='fas fa-bars']"));
+
+        //driver.findElement(By.cssSelector(".logo>img")); идем вниз
+        driver.findElement(By.xpath("//*[@class='logo']/img"));
+
+        //driver.findElement(By.cssSelector(".feedback-body .feedback-date"));
+        driver.findElement(By.xpath("//*[@class='feedback-body']//* [@class='feedback-date']"));
+
+        //parent
+        driver.findElement(By.xpath("//h1/parent::*"));  //one step up
+        driver.findElement(By.xpath("//h1/parent::div"));  //one step up одинаково
+        driver.findElement(By.xpath("//h1/.."));  //one step up одинаково
+
+        //ancestor предок
+
+        driver.findElement(By.xpath("//h1/ancestor::*")); // all это предок html прям самый главный
+        driver.findElement(By.xpath("//h1/ancestor::div")); // two steps
+        driver.findElement(By.xpath("//h1/ancestor::div[2]")); // one step
 
     }
 
@@ -133,3 +192,7 @@ public class FindElementsTests {
     }
 
 }
+
+// cssSelector ->  div>a   xpath ->   //div/a
+
+//cssSelector->    div a   xpath ->   //div//a (дочерний элемент любого уровня)
